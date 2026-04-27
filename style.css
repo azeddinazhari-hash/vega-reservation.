@@ -300,15 +300,18 @@ body {
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
-        height: 70px;
+        height: 75px;
+        position: fixed;
         bottom: 0;
+        left: 0;
         top: auto;
         flex-direction: row;
-        padding: 0 1rem;
+        padding: 0;
         border-right: none;
         border-top: 1px solid var(--card-border);
-        background: rgba(10, 14, 20, 0.98);
-        backdrop-filter: blur(20px);
+        background: rgba(10, 14, 20, 0.95);
+        backdrop-filter: blur(25px);
+        z-index: 9999;
     }
     
     .logo-container { display: none; }
@@ -316,37 +319,57 @@ body {
     .nav-menu {
         flex-direction: row;
         width: 100%;
-        justify-content: space-around;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: center;
         gap: 0;
     }
     
     .nav-item {
-        padding: 0.75rem;
+        padding: 0.5rem;
         flex-direction: column;
-        gap: 5px;
-        font-size: 0.7rem;
+        gap: 4px;
+        font-size: 0.65rem;
+        width: 25%;
+        border-radius: 0;
     }
     
-    .nav-item .icon { font-size: 1.2rem; }
-    
-    .nav-item span { display: block; }
+    .nav-item .icon { font-size: 1.3rem; margin: 0; }
+    .nav-item span { display: block !important; }
     
     .content-area {
-        margin-left: 0;
-        padding: 1.5rem;
-        padding-bottom: 100px; /* Space for bottom nav */
+        margin-left: 0 !important;
+        padding: 1.25rem !important;
+        padding-bottom: 100px !important;
+        width: 100% !important;
+    }
+    
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
     }
     
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
-    .welcome-text h1 { font-size: 1.75rem; }
+    .stat-card { padding: 1.25rem; }
     
-    .glass-panel { padding: 1.5rem; }
-    
-    .premium-table th, .premium-table td {
-        padding: 1rem;
-        font-size: 0.85rem;
+    .table-container {
+        margin: 0 -1.25rem;
+        border-radius: 0;
+        width: calc(100% + 2.5rem);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
+    
+    .premium-table {
+        min-width: 600px; /* Force scroll */
+    }
+
+    .welcome-text h1 { font-size: 1.5rem; }
+    .welcome-text p { font-size: 0.9rem; }
 }
