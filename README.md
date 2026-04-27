@@ -18,12 +18,11 @@ A professional, high-end web application for managing hotel and property reserva
 - **Database**: MySQL (PDO).
 - **Design Concepts**: Glassmorphism, Neon Accents, Mesh Gradients.
 
-## 📦 Installation
+## 📦 Deployment (Vercel)
 
-1. Clone the repository to your local server (XAMPP/WAMP).
-2. Import the database schema from the provided `.sql` file (or use `db.php` configuration).
-3. Update `db.php` with your local credentials.
-4. Access via `http://localhost/projet_final/`.
+1. Connect your GitHub repository to [Vercel](https://vercel.com/).
+2. Vercel will automatically detect the `vercel.json` and deploy the PHP application.
+3. Make sure to configure your remote database environment variables if needed.
 
 ## 📸 Screenshots
 
