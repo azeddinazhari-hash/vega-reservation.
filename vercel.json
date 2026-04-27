@@ -5,8 +5,9 @@
     }
   },
   "rewrites": [
-    { "source": "/", "destination": "/api/lisete_reservation.php" },
-    { "source": "/lisete_reservation.php", "destination": "/api/lisete_reservation.php" },
+    { "source": "/", "destination": "/api/index.php" },
+    { "source": "/index.php", "destination": "/api/index.php" },
+    { "source": "/lisete_reservation.php", "destination": "/api/index.php" },
     { "source": "/ajouter_reservation.php", "destination": "/api/ajouter_reservation.php" },
     { "source": "/insert_reservation.php", "destination": "/api/insert_reservation.php" },
     { "source": "/login.php", "destination": "/api/login.php" },

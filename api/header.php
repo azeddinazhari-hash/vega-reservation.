@@ -36,9 +36,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <a href="ajouter_reservation.php" class="nav-item <?= $current_page == 'ajouter_reservation.php' ? 'active' : '' ?>">
                 <span class="icon">➕</span> <span>Nouvelle Réservation</span>
             </a>
-            <a href="lisete_reservation.php" class="nav-item <?= $current_page == 'lisete_reservation.php' ? 'active' : '' ?>">
+            <a href="index.php" class="nav-item <?= ($current_page == 'index.php' || $current_page == 'lisete_reservation.php') ? 'active' : '' ?>">
                 <span class="icon">📋</span> <span>Liste des Réservations</span>
             </a>
+
             <a href="#" class="nav-item">
                 <span class="icon">📊</span> <span>Statistiques</span>
             </a>
