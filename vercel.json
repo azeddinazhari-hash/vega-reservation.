@@ -1,7 +1,15 @@
 {
   "functions": {
-    "*.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.1"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/api/lisete_reservation.php" },
+    { "source": "/lisete_reservation.php", "destination": "/api/lisete_reservation.php" },
+    { "source": "/ajouter_reservation.php", "destination": "/api/ajouter_reservation.php" },
+    { "source": "/insert_reservation.php", "destination": "/api/insert_reservation.php" },
+    { "source": "/login.php", "destination": "/api/login.php" },
+    { "source": "/logout.php", "destination": "/api/logout.php" }
+  ]
 }
