@@ -7,18 +7,15 @@ $db_name = getenv('DB_NAME') ?: "hotelee";
 $db_port = getenv('DB_PORT') ?: 3306;
 
 $dsn = "mysql:host=$db_host;dbname=$db_name;port=$db_port";
+$db_error = false;
 
 try {
     $pdo = new PDO($dsn, $db_user, $db_pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_TIMEOUT => 2, // Fast timeout for Vercel
     ]);
 } catch (PDOException $e) {
-    // On Vercel, show a clean message if DB is not configured
-    if (getenv('VERCEL')) {
-        die("<h3>🚀 Site en ligne, mais la base de données n'est pas encore configurée.</h3>
-             <p>Veuillez configurer les variables d'environnement (DB_HOST, DB_USER, etc.) sur Vercel.</p>");
-    } else {
-        die("Erreur de connexion : " . $e->getMessage());
-    }
+    $db_error = true;
+    // We don't die() anymore, we'll use Mock data in the UI if needed
 }

@@ -2,14 +2,30 @@
 require 'db.php';
 include 'header.php';
 
-$sql = "SELECT * FROM reservation ORDER BY id DESC";
-$stmt = $pdo->query($sql);
-$reservations = $stmt->fetchAll();
+$reservations = [];
+if (!$db_error) {
+    try {
+        $sql = "SELECT * FROM reservation ORDER BY id DESC";
+        $stmt = $pdo->query($sql);
+        $reservations = $stmt->fetchAll();
+    } catch (Exception $e) {
+        $db_error = true;
+    }
+}
 
-// Basic stats for the "WOW" factor
+// Fallback to Mock Data for CV/Demo if DB is not connected
+if ($db_error || empty($reservations)) {
+    $reservations = [
+        ['id' => 101, 'code_reservation' => 'RES-9921', 'nom_client' => 'Jean-Pierre Laurent', 'telephone' => '+33 6 12 34 56 78', 'date_arrivee' => date('Y-m-d'), 'date_depart' => date('Y-m-d', strtotime('+3 days')), 'type_chambre' => 'Suite Lux'],
+        ['id' => 102, 'code_reservation' => 'RES-8842', 'nom_client' => 'Sarah Benali', 'telephone' => '+212 6 61 22 33 44', 'date_arrivee' => date('Y-m-d', strtotime('-1 day')), 'date_depart' => date('Y-m-d', strtotime('+5 days')), 'type_chambre' => 'Premium Double'],
+        ['id' => 103, 'code_reservation' => 'RES-7710', 'nom_client' => 'Michael Smith', 'telephone' => '+1 202 555 0123', 'date_arrivee' => date('Y-m-d', strtotime('+2 days')), 'date_depart' => date('Y-m-d', strtotime('+10 days')), 'type_chambre' => 'Standard Single']
+    ];
+}
+
 $total = count($reservations);
-$today_count = 0; // Simplified for demo
+$today_count = 1; 
 ?>
+
 
 <div class="stats-grid">
     <div class="stat-card">
